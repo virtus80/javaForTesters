@@ -1,3 +1,5 @@
+package ru.stqa.pft.sandbox;
+
 /**
  * Created by Sasha on 16.04.2016.
  */
