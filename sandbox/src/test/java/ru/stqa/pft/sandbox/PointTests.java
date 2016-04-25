@@ -1,6 +1,6 @@
 package ru.stqa.pft.sandbox;
 
-import junit.framework.Assert;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
