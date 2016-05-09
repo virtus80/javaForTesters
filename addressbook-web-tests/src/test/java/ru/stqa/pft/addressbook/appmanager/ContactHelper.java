@@ -66,6 +66,10 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("home"));
   }
 
+  public int count() {
+    return wd.findElements(By.name("entry")).size();
+  }
+
   private void selectContactById(int id) {
     wd.findElement(By.cssSelector("input[id='" + id + "']")).click();
   }
