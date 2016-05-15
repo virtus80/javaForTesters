@@ -1,20 +1,14 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
-import ru.stqa.pft.addressbook.model.GroupData;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Sasha on 24.04.2016.
@@ -56,7 +50,7 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("add new"));
   }
 
-  public void returnToHomePage() {
+  public void toHomePage() {
     click(By.linkText("home page"));
   }
 
@@ -99,7 +93,7 @@ public class ContactHelper extends HelperBase {
     fillContactForm(contact, true);
     submitContactCreation();
     contactCache = null;
-    returnToHomePage();
+    toHomePage();
   }
 
   public void modify(ContactData contact) {
@@ -107,7 +101,7 @@ public class ContactHelper extends HelperBase {
     fillContactForm(contact, false);
     submitContactModification();
     contactCache = null;
-    returnToHomePage();
+    toHomePage();
   }
 
   public void delete(ContactData contact) {
