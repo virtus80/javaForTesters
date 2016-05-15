@@ -1,0 +1,30 @@
+<list>
+  <contact>
+    <firstName>Andrey-0</firstName>
+    <lastName>Prohorov-0</lastName>
+    <address>37000, Kirov, Pushkinskaya str., 1, ap. 100</address>
+    <mobilePhone>(061)350-71-00</mobilePhone>
+    <email>prohorov0@gmail.com</email>
+  </contact>
+  <contact>
+    <firstName>Andrey-1</firstName>
+    <lastName>Prohorov-1</lastName>
+    <address>37001, Kirov, Pushkinskaya str., 2, ap. 99</address>
+    <mobilePhone>(061)350-71-01</mobilePhone>
+    <email>prohorov1@gmail.com</email>
+  </contact>
+  <contact>
+    <firstName>Andrey-2</firstName>
+    <lastName>Prohorov-2</lastName>
+    <address>37002, Kirov, Pushkinskaya str., 3, ap. 98</address>
+    <mobilePhone>(061)350-71-02</mobilePhone>
+    <email>prohorov2@gmail.com</email>
+  </contact>
+  <contact>
+    <firstName>Andrey-3</firstName>
+    <lastName>Prohorov-3</lastName>
+    <address>37003, Kirov, Pushkinskaya str., 4, ap. 97</address>
+    <mobilePhone>(061)350-71-03</mobilePhone>
+    <email>prohorov3@gmail.com</email>
+  </contact>
+</list>

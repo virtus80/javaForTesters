@@ -1,0 +1,30 @@
+[
+  {
+    "firstName": "Andrey-0",
+    "lastName": "Prohorov-0",
+    "address": "37000, Kirov, Pushkinskaya str., 1, ap. 100",
+    "mobilePhone": "(061)350-71-00",
+    "email": "prohorov0@gmail.com"
+  },
+  {
+    "firstName": "Andrey-1",
+    "lastName": "Prohorov-1",
+    "address": "37001, Kirov, Pushkinskaya str., 2, ap. 99",
+    "mobilePhone": "(061)350-71-01",
+    "email": "prohorov1@gmail.com"
+  },
+  {
+    "firstName": "Andrey-2",
+    "lastName": "Prohorov-2",
+    "address": "37002, Kirov, Pushkinskaya str., 3, ap. 98",
+    "mobilePhone": "(061)350-71-02",
+    "email": "prohorov2@gmail.com"
+  },
+  {
+    "firstName": "Andrey-3",
+    "lastName": "Prohorov-3",
+    "address": "37003, Kirov, Pushkinskaya str., 4, ap. 97",
+    "mobilePhone": "(061)350-71-03",
+    "email": "prohorov3@gmail.com"
+  }
+]
