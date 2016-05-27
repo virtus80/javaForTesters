@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -56,13 +57,15 @@ public class ContactCreationTests extends TestBase {
 
   @Test(dataProvider = "validContactsFromXML")
   public void testContactCreation(ContactData contact) {
+    Groups groups = app.db().groups();
+    File photo = new File("src/test/resources/1038.gif");
     Contacts before = app.db().contacts();
     app.contact().gotoHomePage();
-    File photo = new File("src/test/resources/1038.gif");
     app.contact().create(contact);
     assertThat(app.contact().count(), equalTo(before.size() + 1));
     Contacts after = app.db().contacts();
     assertThat(after, equalTo(before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
+    verifyContactListInUI();
   }
 
 

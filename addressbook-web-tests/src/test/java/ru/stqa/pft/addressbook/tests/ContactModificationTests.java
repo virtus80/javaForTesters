@@ -20,7 +20,7 @@ public class ContactModificationTests extends TestBase {
       app.contact().gotoHomePage();
       app.contact().create(new ContactData().withFirstName("Stepan").withLastName("Grigopyev").
               withAddress("69071, Tambov, Pushkinskaya st., 2").withMobilePhone("0(480)271-37-52").
-              withEmail("grysha@gmail.com").withGroup("test1"));
+              withEmail("grysha@gmail.com").inGroup(app.db().groups().iterator().next()));
     }
   }
 
@@ -36,5 +36,6 @@ public class ContactModificationTests extends TestBase {
     assertThat(app.contact().count(), equalTo(before.size()));
     Contacts after = app.db().contacts();
     assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
+    verifyContactListInUI();
   }
 }

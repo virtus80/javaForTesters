@@ -7,8 +7,11 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.List;
+
+import static ru.stqa.pft.addressbook.tests.TestBase.app;
 
 /**
  * Created by Sasha on 24.04.2016.
@@ -36,7 +39,10 @@ public class ContactHelper extends HelperBase {
     attach(By.name("photo"), contactData.getPhoto());
 
     if (creation) {
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+      if (contactData.getGroups().size() > 0) {
+        Assert.assertTrue(contactData.getGroups().size() == 1);
+        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
+      }
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
@@ -84,6 +90,22 @@ public class ContactHelper extends HelperBase {
             ("//input[@id='%s']/../..//img[@title='Details']", id))).click();
   }
 
+  private void selectGroupByName(String name) {
+    new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(name);
+  }
+
+  private void selectGroupForRemoving(String name) {
+    new Select(wd.findElement(By.name("group"))).selectByVisibleText(name);
+  }
+
+  private void addSelectedContactToGroup() {
+    wd.findElement(By.name("add")).click();
+  }
+
+  private void removeSelectedContactFromGroup() { wd.findElement(By.name("remove")).click(); }
+
+
+
   public void submitContactModification() {
     click(By.xpath("//div[@id='content']/form[1]/input[22]"));
   }
@@ -129,7 +151,7 @@ public class ContactHelper extends HelperBase {
       String allEmails = cells.get(4).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
       contactCache.add(new ContactData().withId(id).withFirstName(firstname).withLastName(lastname).withAddress(address).
-              withAllEmails(allEmails).withAllPhones(allPhones).withGroup("test1"));
+              withAllEmails(allEmails).withAllPhones(allPhones).inGroup(app.db().groups().iterator().next()));
     }
     return contactCache;
   }
@@ -157,4 +179,21 @@ public class ContactHelper extends HelperBase {
     wd.navigate().back();
     return details;
   }
+
+  public void addToGroup(ContactData contact, GroupData group) {
+    selectContactById(contact.getId());
+    selectGroupByName(group.getName());
+    addSelectedContactToGroup();
+    gotoHomePage();
+  }
+
+  public void removeFromGroup(ContactData contact, GroupData group) {
+    selectGroupForRemoving(group.getName());
+    selectContactById(contact.getId());
+    removeSelectedContactFromGroup();
+    gotoHomePage();
+  }
+
+
+
 }
