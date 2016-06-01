@@ -51,7 +51,11 @@ public class MailHelper {
     }
   }
 
-  public void start() {wiser.start(); }
+  public void start() {
+    if(!wiser.getServer().isRunning()) {
+      wiser.start();
+    }
+  }
 
   public void stop() {wiser.stop(); }
 }
