@@ -17,10 +17,11 @@ import static org.testng.Assert.assertEquals;
 /**
  * Created by Sasha on 08.06.2016.
  */
-public class RestTests {
+public class RestTests extends TestBase{
 
   @Test
   public void testCreateIssue() throws IOException {
+    skipIfNotFixed(1);
     Set<Issue> oldIssues = getIssues();
     Issue newIssue = new Issue().withSubject("Test issue").withDescription("New test issue");
     int issueId = createIssue(newIssue);
@@ -36,9 +37,7 @@ public class RestTests {
     return new Gson().fromJson(issues, new TypeToken<Set<Issue>>() {}.getType());
   }
 
-  private Executor getExecutor() {
-    return Executor.newInstance().auth("LSGjeU4yP1X493ud1hNniA==", "");
-  }
+
 
   private int createIssue(Issue newIssue) throws IOException {
     String json = getExecutor().execute(Request.Post("http://demo.bugify.com/api/issues.json").bodyForm(
